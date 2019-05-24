@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>处理word</title>
+</head>
+<body>
+文件夹路径：<input type="text" id="path">
+<button id="btn">处理</button>
+
+<script type="application/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="application/javascript">
+    $(function () {
+        $("#btn").click(function () {
+            var $input = $("#path");
+            if ($.trim($input.val()) == "") {
+                alert("路径为空！");
+            }
+            $.ajax({
+                type: "GET",
+                url: "../readWord",
+                data: {path: $input.val()},
+                success: function (data) {
+                    alert(data.msg);
+                }
+            });
+
+        });
+
+    })
+
+</script>
+</body>
+</html>

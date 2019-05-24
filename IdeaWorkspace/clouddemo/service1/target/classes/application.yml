@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: service1 #\u6307\u660E\u5FAE\u670D\u52A1\u4E0B\u66B4\u9732\u670D\u52A1\u7684\u540D\u79F0\uFF0C\u6781\u5176\u91CD\u8981
+
+eureka:
+  client: #\u5BA2\u6237\u7AEF\u6CE8\u518C\u8FDBeureka\u670D\u52A1\u5217\u8868\u5185
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+    #\u5BF9\u5E94\u6CE8\u518C\u4E2D\u5FC3\u7684eureka.client.service-url.defaultZone\u503C
+server:
+  port: 8001
