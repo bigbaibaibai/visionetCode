@@ -1,0 +1,38 @@
+person:
+  user-name: ${random.int}   #使用UUID
+  age: ${random.int(10)}    #使用随机数
+  boss: false
+  birth: 1998/9/5
+
+  map: {k1: v1,k2: v2}
+  list: [v1,v2,v3,v4]
+
+  dog:
+    name: ${person.user-name}_dog  #引用配置文件中其他属性的值
+    #name: ${user.hello}_dog  #如果引用一个不存在的属性，name的值为${user.hello}_dog这个字符串
+    #name: ${user.hello:user}_dog  #使用:可以指定，如果属性不存在的默认值，name的值为user
+    age: 10
+
+
+#spring:
+#  profiles:
+#    active: dev
+#
+#server:
+#  port: 8080
+#
+#---
+#
+#
+#server:
+#  port: 8081
+#
+#spring:
+#  profiles: dev
+#
+#---
+#server:
+#  port: 8082
+#
+#spring:
+#  profiles: prod

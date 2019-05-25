@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		属性信息添加页面
+
+		<form id="form_attr_add" action="" method="post">
+			<table border="1" width="600px">
+				<tr>
+					<td>属性名：<input type="text" name="list_attr[0].shxm_mch" /></td>
+					<td></td>
+					<td>添加属性值</td>
+				</tr>
+				<tr>
+					<td>属性值：<input type="text" name="list_attr[0].list_value[0].shxzh" /></td>
+					<td>单位：<input type="text" name="list_attr[0].list_value[1].shxzh_mch" /></td>
+					<td>删除</td>
+				</tr>
+				<tr>
+					<td>属性值：<input type="text" name="list_attr[1].list_value[0].shxzh" /></td>
+					<td>单位：<input type="text" name="list_attr[1].list_value[1].shxzh_mch" /></td>
+					<td>删除</td>
+				</tr>
+
+			</table>
+
+			<table border="1" width="600px">
+				<tr>
+					<td>属性名：<input type="text" /></td>
+					<td></td>
+					<td>添加属性值</td>
+				</tr>
+				<tr>
+					<td>属性值：<input type="text" /></td>
+					<td>单位：<input type="text" /></td>
+					<td>删除</td>
+				</tr>
+				<tr>
+					<td>属性值：<input type="text" /></td>
+					<td>单位：<input type="text" /></td>
+					<td>删除</td>
+				</tr>
+
+			</table>
+
+			<input type="submit" value="提交" />
+		</form>
+		
+		<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="js/jquery-form.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/attrAdd.js"></script>
+	</body>
+
+</html>

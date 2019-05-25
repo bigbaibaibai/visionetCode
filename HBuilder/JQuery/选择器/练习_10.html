@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				$(".p>p").click(function(){
+					alert($(this).text());
+				});
+				$("table:first tr:even").css("background-color","#CCC");
+				$(".btn").click(function(){ 
+					alert($(".checkbox>:checkbox:checked").length);
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<div class="p">
+			<p title="^^段落1">段落1</p>
+			<p title="^^段落2">段落2</p>
+			<p title="^^段落3">段落3</p>
+		</div>
+		<table class="table1" cellspacing="2" cellpadding="5">
+			<tr>
+				<td>第一行</td>
+				<td>第一行</td>
+			</tr>
+			<tr>
+				<td>第二行</td>
+				<td>第二行</td>
+			</tr>
+			<tr>
+				<td>第三行</td>
+				<td>第三行</td>
+			</tr>
+			<tr>
+				<td>第四行</td>
+				<td>第四行</td>
+			</tr>
+		</table>
+		<table class="table2" cellspacing="2" cellpadding="5">
+			<tr>
+				<td>第一行</td>
+				<td>第一行</td>
+			</tr>
+			<tr>
+				<td>第二行</td>
+				<td>第二行</td>
+			</tr>
+			<tr>
+				<td>第三行</td>
+				<td>第三行</td>
+			</tr>
+			<tr>
+				<td>第四行</td>
+				<td>第四行</td>
+			</tr>
+		</table>
+		<br />
+		<div class="checkbox">
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input class="btn" type="button" value="您选中的个数"/>
+		</div>
+	</body>
+</html>

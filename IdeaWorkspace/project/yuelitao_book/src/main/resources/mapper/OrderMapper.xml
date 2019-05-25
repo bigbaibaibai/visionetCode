@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xyz.thishome.yuelitao_book.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="xyz.thishome.yuelitao_book.pojo.Order" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="shhr" property="shhr" jdbcType="VARCHAR" />
+    <result column="zje" property="zje" jdbcType="INTEGER" />
+    <result column="jdh" property="jdh" jdbcType="INTEGER" />
+    <result column="yh_id" property="yhId" jdbcType="INTEGER" />
+    <result column="chjshj" property="chjshj" jdbcType="TIMESTAMP" />
+    <result column="yjsdshj" property="yjsdshj" jdbcType="TIMESTAMP" />
+    <result column="dzh_id" property="dzhId" jdbcType="INTEGER" />
+    <result column="dzh_mch" property="dzhMch" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, shhr, zje, jdh, yh_id, chjshj, yjsdshj, dzh_id, dzh_mch
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="xyz.thishome.yuelitao_book.pojo.OrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from `order`
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from `order`
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from `order`
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="xyz.thishome.yuelitao_book.pojo.OrderExample" >
+    delete from `order`
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="xyz.thishome.yuelitao_book.pojo.Order" >
+    insert into `order` (Id, shhr, zje,
+      jdh, yh_id, chjshj, 
+      yjsdshj, dzh_id, dzh_mch
+      )
+    values (#{id,jdbcType=VARCHAR}, #{shhr,jdbcType=VARCHAR}, #{zje,jdbcType=INTEGER}, 
+      #{jdh,jdbcType=INTEGER}, #{yhId,jdbcType=INTEGER}, #{chjshj,jdbcType=TIMESTAMP}, 
+      #{yjsdshj,jdbcType=TIMESTAMP}, #{dzhId,jdbcType=INTEGER}, #{dzhMch,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="xyz.thishome.yuelitao_book.pojo.Order" >
+    insert into `order`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="shhr != null" >
+        shhr,
+      </if>
+      <if test="zje != null" >
+        zje,
+      </if>
+      <if test="jdh != null" >
+        jdh,
+      </if>
+      <if test="yhId != null" >
+        yh_id,
+      </if>
+      <if test="chjshj != null" >
+        chjshj,
+      </if>
+      <if test="yjsdshj != null" >
+        yjsdshj,
+      </if>
+      <if test="dzhId != null" >
+        dzh_id,
+      </if>
+      <if test="dzhMch != null" >
+        dzh_mch,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="shhr != null" >
+        #{shhr,jdbcType=VARCHAR},
+      </if>
+      <if test="zje != null" >
+        #{zje,jdbcType=INTEGER},
+      </if>
+      <if test="jdh != null" >
+        #{jdh,jdbcType=INTEGER},
+      </if>
+      <if test="yhId != null" >
+        #{yhId,jdbcType=INTEGER},
+      </if>
+      <if test="chjshj != null" >
+        #{chjshj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yjsdshj != null" >
+        #{yjsdshj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dzhId != null" >
+        #{dzhId,jdbcType=INTEGER},
+      </if>
+      <if test="dzhMch != null" >
+        #{dzhMch,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="xyz.thishome.yuelitao_book.pojo.OrderExample" resultType="java.lang.Integer" >
+    select count(*) from `order`
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update `order`
+    <set >
+      <if test="record.id != null" >
+        Id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shhr != null" >
+        shhr = #{record.shhr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zje != null" >
+        zje = #{record.zje,jdbcType=INTEGER},
+      </if>
+      <if test="record.jdh != null" >
+        jdh = #{record.jdh,jdbcType=INTEGER},
+      </if>
+      <if test="record.yhId != null" >
+        yh_id = #{record.yhId,jdbcType=INTEGER},
+      </if>
+      <if test="record.chjshj != null" >
+        chjshj = #{record.chjshj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.yjsdshj != null" >
+        yjsdshj = #{record.yjsdshj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dzhId != null" >
+        dzh_id = #{record.dzhId,jdbcType=INTEGER},
+      </if>
+      <if test="record.dzhMch != null" >
+        dzh_mch = #{record.dzhMch,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update `order`
+    set Id = #{record.id,jdbcType=VARCHAR},
+      shhr = #{record.shhr,jdbcType=VARCHAR},
+      zje = #{record.zje,jdbcType=INTEGER},
+      jdh = #{record.jdh,jdbcType=INTEGER},
+      yh_id = #{record.yhId,jdbcType=INTEGER},
+      chjshj = #{record.chjshj,jdbcType=TIMESTAMP},
+      yjsdshj = #{record.yjsdshj,jdbcType=TIMESTAMP},
+      dzh_id = #{record.dzhId,jdbcType=INTEGER},
+      dzh_mch = #{record.dzhMch,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="xyz.thishome.yuelitao_book.pojo.Order" >
+    update `order`
+    <set >
+      <if test="shhr != null" >
+        shhr = #{shhr,jdbcType=VARCHAR},
+      </if>
+      <if test="zje != null" >
+        zje = #{zje,jdbcType=INTEGER},
+      </if>
+      <if test="jdh != null" >
+        jdh = #{jdh,jdbcType=INTEGER},
+      </if>
+      <if test="yhId != null" >
+        yh_id = #{yhId,jdbcType=INTEGER},
+      </if>
+      <if test="chjshj != null" >
+        chjshj = #{chjshj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yjsdshj != null" >
+        yjsdshj = #{yjsdshj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dzhId != null" >
+        dzh_id = #{dzhId,jdbcType=INTEGER},
+      </if>
+      <if test="dzhMch != null" >
+        dzh_mch = #{dzhMch,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xyz.thishome.yuelitao_book.pojo.Order" >
+    update `order`
+    set shhr = #{shhr,jdbcType=VARCHAR},
+      zje = #{zje,jdbcType=INTEGER},
+      jdh = #{jdh,jdbcType=INTEGER},
+      yh_id = #{yhId,jdbcType=INTEGER},
+      chjshj = #{chjshj,jdbcType=TIMESTAMP},
+      yjsdshj = #{yjsdshj,jdbcType=TIMESTAMP},
+      dzh_id = #{dzhId,jdbcType=INTEGER},
+      dzh_mch = #{dzhMch,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

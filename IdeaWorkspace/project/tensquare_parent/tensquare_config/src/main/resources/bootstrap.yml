@@ -1,0 +1,11 @@
+server:
+  port: 7000
+
+spring:
+  application:
+    name: microservicecloud-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/bigbaibaibai/tensquare-config.git  #github上面仓库的ssh的uri

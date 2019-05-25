@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="username">
+    <p>hello，{{username}}</p>
+
+</div>
+
+<script type="application/javascript" src="../js/vue.js"></script>
+<script type="application/javascript">
+    const vm = new Vue({   //配置对象
+        el: '#app',   //element   元素（这里用选择器选择一个元素）
+        data: {  //数据
+            username: 'username'
+        },
+        method:{
+
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				function anmateIt(){
+					$(".mover").slideToggle("slow",anmateIt);
+				};
+				anmateIt();
+				
+				$("#btn1").click(function(){
+					$("div.one :nth-child(2)").css("background","#ADFF2F");
+				});
+				$("#btn2").click(function(){
+					$("div.one :first-child").css("background","#ADFF2F");
+				});
+				$("#btn3").click(function(){
+					$("div.one :last-child").css("background","#ADFF2F");
+				});
+				$("#btn4").click(function(){
+					$("div.one :only-child").css("background","#ADFF2F");
+				});
+			})
+			
+			
+		</script>
+		<style type="text/css">
+			*{
+				font-size: 12px;
+			}
+			div,span{
+				background-color:#999 ;
+				width: 150px;
+				height: 150px;
+				margin: 5px;
+				font-size: 14px;
+				border: 1px solid black;
+				float: left;
+			}
+			.mini{
+				width: 60px;
+				height: 60px;
+				margin: 5px;
+				font-size: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<input id="btn1" type="button" value="选取每个class为one的div父元素下的第2个子元素"/>
+		<input id="btn2"  type="button" value="选取每个class为one的父元素下的第一个子元素"/>
+		<input id="btn3"  type="button" value="选取每个class为one的div父元素下的最后一个子元素"/>
+		<input id="btn4"  type="button" value="如果class为one的div父元素下的仅仅只有一个子元素，那么选中这个子元素"/>
+		<div id="one" class="one">
+			id为one，class为one的div
+			<div class="mini">
+				class为mini
+			</div>
+		</div>
+		<div id="two" class="one" title="test">
+			id为two，class为one，title为test的div
+			<div class="mini" title="other">class为mini,title为other</div>
+			<div class="mini" title="test">class为mini,title为test</div>
+		</div>
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div style="width: 60px;height: 60px;"></div>
+		</div>
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini" title="tesst">class为mini,title为tesst</div>
+		</div>
+		<div>
+			包含input的type为“hidden”的div
+			<input type="hidden"/>
+		</div>
+		<div class="mover">
+			正在执行动画的div元素
+		</div>
+	</body>
+</html>

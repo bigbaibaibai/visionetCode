@@ -1,0 +1,7 @@
+dubbo:
+  application:
+    name: springboot-06-dubbo-provider-ticket
+  registry:
+    address: zookeeper://192.168.153.128:2181
+  scan:
+    base-packages: xyz.thishome.ticket.service

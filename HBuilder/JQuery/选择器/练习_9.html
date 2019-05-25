@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript">
+			$(function() {
+
+				$("#btn1").click(function() {
+					$(".text :text:enabled").val("^^可用的input");
+				});
+				$("#btn2").click(function() {
+					$(".text> :text:disabled").val("^^不可用的input");
+				});
+				$("#btn3").click(function() {
+					alert($(".checkbox :checked:checked").length);
+					$(".checkbox :checked[name=test]:checked").each(function(){
+						alert(this.value);
+					});
+				});
+				$("#btn4").click(function() {
+					$(".select1>select :selected").each(function(){
+						alert(this.value);
+					});
+					
+				});
+				$("#btn5").click(function() {
+					alert($(".select2>select :selected").val());
+				});
+			})
+		</script>
+	</head>
+
+	<body>
+		<input id="btn1" type="button" value="对表单内可用input赋值操作" />
+		<input id="btn2" type="button" value="对表单内不可用input赋值操作" />
+		<input id="btn3" type="button" value="获取多选框选中个数" />
+		<input id="btn4" type="button" value="获取多选框选中的内容" />
+		<input id="btn5" type="button" value="获取下拉框选中的内容" />
+		<br /><br />
+		<div class="text">
+			可用元素：
+			<input type="text" value="可用的input" /><br /><br /> 不可用的元素：
+			<input type="text" disabled="disabled" value="不可用的input" /><br /><br /> 可用元素：
+			<input type="text" value="可用的input" /><br /><br /> 不可用的元素：
+			<input type="text" disabled="disabled" value="不可用的input" /><br /><br /><br />
+		</div>
+
+		<div class="checkbox">
+			多选框<br />
+			<input type="checkbox" name="test" value="test1"/>test1
+			<input type="checkbox" name="test" value="test2"/>test2
+			<input type="checkbox" name="test" value="test3"/>test3
+			<input type="checkbox" name="test" value="test4"/>test4
+			<input type="checkbox" name="test" value="test5"/>test5 <br /><br />
+		</div>
+
+		<div class="select1">
+			下拉列表1：<br />
+			<select multiple="multiple">
+				<option value="浙江">浙江</option>
+				<option value="河南">河南</option>
+				<option value="辽宁">辽宁</option>
+				<option value="北京">北京</option>
+				<option value="天津">天津</option>
+				<option value="湖北">湖北</option>
+			</select>
+		</div>
+		<br /><br />
+		<div class="select2">
+			下拉列表2：
+			<br />
+			<select>
+				<option value="浙江">浙江</option>
+				<option value="河南">河南</option>
+				<option value="辽宁">辽宁</option>
+				<option value="北京">北京</option>
+				<option value="天津">天津</option>
+				<option value="湖北">湖北</option>
+			</select>
+		</div>
+
+	</body>
+
+</html>

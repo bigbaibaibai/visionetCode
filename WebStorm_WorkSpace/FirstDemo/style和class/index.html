@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>style和class绑定</title>
+    <style>
+        .bgred {
+            background: red;
+        }
+
+        .bgblue {
+            background: blue;
+        }
+
+        .bigsize {
+            font-size: 30px;
+        }
+
+        .smallsize {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <!--  字符串方式  -->
+    <p :class="p_str_class">字符串方式</p>
+    <!--  对象方式  -->
+    <p :class="{bgred:isred,smallsize:issmall,bgblue:isblue,bigsize:isbig}">对象方式</p>
+    <!--  数组方式  -->
+    <p :class="['bgred','bigsize']">数组方式</p>
+
+    <p :style="{ background : bgcolor ,fontSize : size + 'px' }">style绑定</p>
+
+    <button @click="btn">转换</button>
+
+</div>
+
+<script type="application/javascript" src="../js/vue.js"></script>
+<script type="application/javascript">
+    var demo = new Vue({
+        el: "#demo",
+        data: {
+            p_str_class: "bgred smallsize",
+            isred: true,
+            issmall: true,
+            isblue: false,
+            isbig: false,
+            bgcolor: "yellow",
+            size: 40
+        },
+        methods: {
+            btn() {
+                this.p_str_class = this.p_str_class == "bgred smallsize" ? "bgblue bigsize" : "bgred smallsize";
+                this.isred = !this.isred;
+                this.issmall = !this.issmall;
+                this.isblue = !this.isblue;
+                this.isbig = !this.isbig;
+            }
+        }
+    });
+</script>
+</body>
+</html>

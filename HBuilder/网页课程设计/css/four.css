@@ -1,0 +1,44 @@
+
+@charset "utf-8";
+
+.center{
+	width: 100%;
+	margin-top:30px ;
+}
+.center_center{
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.aside{
+	float:left;
+	width: 300px;
+	position: relative;
+}
+.aside ul{
+	position: absolute;
+	right: 80px;
+}
+.aside li{
+	padding: 10px 10px;
+	margin: 17px 0;
+	background-color: #f1f1f1;
+	border-radius: 50%;
+	cursor:  pointer;
+}
+.aside li:hover{
+	color: white;
+	background-color: #666;
+}
+
+.about{
+	margin-top:30px ;
+	float: right;
+	width: 900px;
+}
+
+.about p {
+	line-height: 2;
+	margin: 20px 0;
+}

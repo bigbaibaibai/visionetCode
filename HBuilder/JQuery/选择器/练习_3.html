@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				$("#btn1").click(function(){
+					$("body div").css("background","#ADFF2F");
+				});
+				$("#btn2").click(function(){
+					$("body>div").css("background","#ADFF2F");
+				});
+				$("#btn3").click(function(){
+					$("#one+div").css("background","#ADFF2F");
+				});
+				$("#btn4").click(function(){
+					$("#two~div").css("background","#ADFF2F");
+				});
+				$("#btn5").click(function(){
+					$("#two").siblings("div").css("background","#ADFF2F");
+				});
+				$("#btn6").click(function(){
+					$("#one").nextAll("span:first").css("background","#ADFF2F");
+				});
+				$("#btn7").click(function(){
+					$("#two~div").prevAll("div").css("background","#ADFF2F");
+				});
+			})
+			
+			
+		</script>
+		<style type="text/css">
+			*{
+				font-size: 12px;
+			}
+			div,span{
+				background-color:#999 ;
+				width: 150px;
+				height: 150px;
+				margin: 5px;
+				font-size: 14px;
+				border: 1px solid black;
+				float: left;
+			}
+			.mini{
+				width: 60px;
+				height: 60px;
+				margin: 5px;
+				font-size: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<input id="btn1" type="button" value="选择body内的所有div元素"/>
+		<input id="btn2"  type="button" value="在body内，选择子元素是div的"/>
+		<input id="btn3"  type="button" value="选择id为one的下一个div元素"/>
+		<input id="btn4"  type="button" value="选择id为two的元素后面的所有div兄弟元素"/>
+		<input id="btn5"  type="button" value="选择id为two的元素所有div兄弟元素"/><br />
+		<input id="btn6"  type="button" value="选择id为one的下一个span元素"/>
+		<input id="btn7"  type="button" value="选择id为two的元素前边的所有的div兄弟元素"/><br />
+		<div id="one" class="one">
+			id为one，class为one的div
+			<div class="mini">
+				class为mini
+			</div>
+		</div>
+		<div id="two" class="one" title="test">
+			id为two，class为one，title为test的div
+			<div class="mini" title="other">class为mini,title为other</div>
+			<div class="mini" title="test">class为mini,title为test</div>
+		</div>
+		<div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div style="width: 60px;height: 60px;"></div>
+		</div>
+		<div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini" title="test">class为mini,title为test</div>
+		</div>
+		<div>
+			包含input的type为“hidden”的div
+			<input type="hidden"/>
+		</div>
+		<span>^^span元素^^</span>
+	</body>
+</html>

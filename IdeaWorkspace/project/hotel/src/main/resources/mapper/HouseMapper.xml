@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xyz.thishome.hotel.mapper.HouseMapper" >
+  <resultMap id="BaseResultMap" type="xyz.thishome.hotel.pojo.House" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="house_level" property="houseLevel" jdbcType="INTEGER" />
+    <result column="house_price" property="housePrice" jdbcType="INTEGER" />
+    <result column="house_status" property="houseStatus" jdbcType="INTEGER" />
+    <result column="house_floor" property="houseFloor" jdbcType="VARCHAR" />
+    <result column="house_image" property="houseImage" jdbcType="VARCHAR" />
+    <result column="house_number" property="houseNumber" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="xyz.thishome.hotel.pojo.House" extends="BaseResultMap" >
+    <result column="house_info" property="houseInfo" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, house_level, house_price, house_status, house_floor, house_image, house_number
+  </sql>
+  <sql id="Blob_Column_List" >
+    house_info
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="xyz.thishome.hotel.pojo.HouseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from house
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="xyz.thishome.hotel.pojo.HouseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from house
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from house
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from house
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="xyz.thishome.hotel.pojo.HouseExample" >
+    delete from house
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="xyz.thishome.hotel.pojo.House" >
+    insert into house (Id, house_level, house_price, 
+      house_status, house_floor, house_image, 
+      house_number, house_info)
+    values (#{id,jdbcType=INTEGER}, #{houseLevel,jdbcType=INTEGER}, #{housePrice,jdbcType=INTEGER}, 
+      #{houseStatus,jdbcType=INTEGER}, #{houseFloor,jdbcType=VARCHAR}, #{houseImage,jdbcType=VARCHAR}, 
+      #{houseNumber,jdbcType=INTEGER}, #{houseInfo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="xyz.thishome.hotel.pojo.House" >
+    insert into house
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="houseLevel != null" >
+        house_level,
+      </if>
+      <if test="housePrice != null" >
+        house_price,
+      </if>
+      <if test="houseStatus != null" >
+        house_status,
+      </if>
+      <if test="houseFloor != null" >
+        house_floor,
+      </if>
+      <if test="houseImage != null" >
+        house_image,
+      </if>
+      <if test="houseNumber != null" >
+        house_number,
+      </if>
+      <if test="houseInfo != null" >
+        house_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="houseLevel != null" >
+        #{houseLevel,jdbcType=INTEGER},
+      </if>
+      <if test="housePrice != null" >
+        #{housePrice,jdbcType=INTEGER},
+      </if>
+      <if test="houseStatus != null" >
+        #{houseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="houseFloor != null" >
+        #{houseFloor,jdbcType=VARCHAR},
+      </if>
+      <if test="houseImage != null" >
+        #{houseImage,jdbcType=VARCHAR},
+      </if>
+      <if test="houseNumber != null" >
+        #{houseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="houseInfo != null" >
+        #{houseInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="xyz.thishome.hotel.pojo.HouseExample" resultType="java.lang.Integer" >
+    select count(*) from house
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update house
+    <set >
+      <if test="record.id != null" >
+        Id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.houseLevel != null" >
+        house_level = #{record.houseLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.housePrice != null" >
+        house_price = #{record.housePrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.houseStatus != null" >
+        house_status = #{record.houseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.houseFloor != null" >
+        house_floor = #{record.houseFloor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.houseImage != null" >
+        house_image = #{record.houseImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.houseNumber != null" >
+        house_number = #{record.houseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.houseInfo != null" >
+        house_info = #{record.houseInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update house
+    set Id = #{record.id,jdbcType=INTEGER},
+      house_level = #{record.houseLevel,jdbcType=INTEGER},
+      house_price = #{record.housePrice,jdbcType=INTEGER},
+      house_status = #{record.houseStatus,jdbcType=INTEGER},
+      house_floor = #{record.houseFloor,jdbcType=VARCHAR},
+      house_image = #{record.houseImage,jdbcType=VARCHAR},
+      house_number = #{record.houseNumber,jdbcType=INTEGER},
+      house_info = #{record.houseInfo,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update house
+    set Id = #{record.id,jdbcType=INTEGER},
+      house_level = #{record.houseLevel,jdbcType=INTEGER},
+      house_price = #{record.housePrice,jdbcType=INTEGER},
+      house_status = #{record.houseStatus,jdbcType=INTEGER},
+      house_floor = #{record.houseFloor,jdbcType=VARCHAR},
+      house_image = #{record.houseImage,jdbcType=VARCHAR},
+      house_number = #{record.houseNumber,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="xyz.thishome.hotel.pojo.House" >
+    update house
+    <set >
+      <if test="houseLevel != null" >
+        house_level = #{houseLevel,jdbcType=INTEGER},
+      </if>
+      <if test="housePrice != null" >
+        house_price = #{housePrice,jdbcType=INTEGER},
+      </if>
+      <if test="houseStatus != null" >
+        house_status = #{houseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="houseFloor != null" >
+        house_floor = #{houseFloor,jdbcType=VARCHAR},
+      </if>
+      <if test="houseImage != null" >
+        house_image = #{houseImage,jdbcType=VARCHAR},
+      </if>
+      <if test="houseNumber != null" >
+        house_number = #{houseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="houseInfo != null" >
+        house_info = #{houseInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="xyz.thishome.hotel.pojo.House" >
+    update house
+    set house_level = #{houseLevel,jdbcType=INTEGER},
+      house_price = #{housePrice,jdbcType=INTEGER},
+      house_status = #{houseStatus,jdbcType=INTEGER},
+      house_floor = #{houseFloor,jdbcType=VARCHAR},
+      house_image = #{houseImage,jdbcType=VARCHAR},
+      house_number = #{houseNumber,jdbcType=INTEGER},
+      house_info = #{houseInfo,jdbcType=LONGVARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xyz.thishome.hotel.pojo.House" >
+    update house
+    set house_level = #{houseLevel,jdbcType=INTEGER},
+      house_price = #{housePrice,jdbcType=INTEGER},
+      house_status = #{houseStatus,jdbcType=INTEGER},
+      house_floor = #{houseFloor,jdbcType=VARCHAR},
+      house_image = #{houseImage,jdbcType=VARCHAR},
+      house_number = #{houseNumber,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

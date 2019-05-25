@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		spu信息添加
+
+		<hr />
+
+		<form id="form_spu_add" action="#" method="post" enctype="multipart/form-data">
+			商品名称：<input type="text" name="shp_mch" /><br /><br /> 商品描述：
+			<textarea rows="10" cols="30" name="shp_msh"></textarea><br /><br /> 商品图片：<br />
+			<div picture-div-num="0" style="float: left;margin:0 10px 0 10px;border:1px solid red;">
+				<input picture-file-num="0" add_flag="flag" type="file" name="files" style="display: none;" />
+				<img picture-img-num="0" src="img/upload_hover.png" width="100px" height="100px" style="cursor: pointer;" />
+			</div>
+			<br /><br />
+			<input name="input_submit_add" type="button" value="添加" />
+		</form>
+
+		<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="js/jquery-form.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/spu_handle.js"></script>
+		<script type="text/javascript" src="js/spuAdd.js"></script>
+	</body>
+
+</html>

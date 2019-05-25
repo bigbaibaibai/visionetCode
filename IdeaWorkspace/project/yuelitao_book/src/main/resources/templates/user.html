@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/user.css">
+		<link rel="icon" href="./images/icon.png">
+		<title>用户信息</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse _header">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					 aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="index.html"><img src="images/logo.jpg" alt="..."></a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="cart"><a href="shoppingcart.html">我的购物车</a></li>
+						<li class="order"><a href="order.html">我的订单</a></li>
+						<li class="exit"><a href="javascript:;">退出</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+		<div class="_information">
+			<h2>个人信息</h2>
+		</div>
+
+		<div class="_input">
+			<form>
+				<div class="form-group">
+					<label for="disabledInput">用户名：</label>
+					<input type="text" class="form-control" id="disabledInput" placeholder="用户名" disabled>
+				</div>
+				<div class="form-group">
+					<label for="nickname">昵称：</label>
+					<input type="text" class="form-control" id="nickname" placeholder="6-16个英文字母或汉字">
+				</div>
+				<div class="form-group">
+					<label for="phone">手机号：</label>
+					<input type="text" class="form-control" id="phone" placeholder="请输入手机号码">
+				</div>
+				<div class="form-group">
+					<label for="email">Email：</label>
+					<input type="email" class="form-control" id="email" placeholder="请输入你的邮箱">
+				</div>
+				<div class="form-group">
+					<label for="address">地址：</label>
+					<input type="text" class="form-control" id="address" placeholder="请输入你的地址">
+				</div>
+				<button type="submit" class="btn btn-default">保存</button>
+			</form>
+
+		</div>
+
+
+
+		<script src="js/jquery-3.3.1.js"></script>
+		<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/login.js"></script>
+		<script src="./js/user.js"></script>
+
+
+	</body>
+</html>

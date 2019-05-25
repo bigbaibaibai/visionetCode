@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.thishome.mapper.T_MALL_TRADE_MARK_mapper">
+
+    <select id="getPPListForFlId" resultType="xyz.thishome.bean.T_MALL_TRADE_MARK">
+
+        select T_MALL_TRADE_MARK.Id,T_MALL_TRADE_MARK.ppmch from T_MALL_TRADE_MARK join t_mall_tm_class
+        on  T_MALL_TRADE_MARK.id=t_mall_tm_class.pp_id
+        <where>
+            t_mall_tm_class.flbh1 = #{flbh1}
+        </where>
+
+    </select>
+
+</mapper>

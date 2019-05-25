@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xyz.thishome.onling_ksxt.mapper.ChoiseMapper" >
+  <resultMap id="BaseResultMap" type="xyz.thishome.onling_ksxt.pojo.Choise" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="choise_a" property="choiseA" jdbcType="VARCHAR" />
+    <result column="choise_b" property="choiseB" jdbcType="VARCHAR" />
+    <result column="choise_c" property="choiseC" jdbcType="VARCHAR" />
+    <result column="choise_d" property="choiseD" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, title, subject, answer, type, creat_time, update_time, choise_a, choise_b, choise_c, 
+    choise_d
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="xyz.thishome.onling_ksxt.pojo.ChoiseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from choise
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from choise
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from choise
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="xyz.thishome.onling_ksxt.pojo.ChoiseExample" >
+    delete from choise
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="xyz.thishome.onling_ksxt.pojo.Choise" >
+    insert into choise (id, title, subject, 
+      answer, type, creat_time, 
+      update_time, choise_a, choise_b, 
+      choise_c, choise_d)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, 
+      #{answer,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{choiseA,jdbcType=VARCHAR}, #{choiseB,jdbcType=VARCHAR}, 
+      #{choiseC,jdbcType=VARCHAR}, #{choiseD,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="xyz.thishome.onling_ksxt.pojo.Choise" >
+    insert into choise
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="creatTime != null" >
+        creat_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="choiseA != null" >
+        choise_a,
+      </if>
+      <if test="choiseB != null" >
+        choise_b,
+      </if>
+      <if test="choiseC != null" >
+        choise_c,
+      </if>
+      <if test="choiseD != null" >
+        choise_d,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="choiseA != null" >
+        #{choiseA,jdbcType=VARCHAR},
+      </if>
+      <if test="choiseB != null" >
+        #{choiseB,jdbcType=VARCHAR},
+      </if>
+      <if test="choiseC != null" >
+        #{choiseC,jdbcType=VARCHAR},
+      </if>
+      <if test="choiseD != null" >
+        #{choiseD,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="xyz.thishome.onling_ksxt.pojo.ChoiseExample" resultType="java.lang.Integer" >
+    select count(*) from choise
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update choise
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subject != null" >
+        subject = #{record.subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.answer != null" >
+        answer = #{record.answer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatTime != null" >
+        creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.choiseA != null" >
+        choise_a = #{record.choiseA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.choiseB != null" >
+        choise_b = #{record.choiseB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.choiseC != null" >
+        choise_c = #{record.choiseC,jdbcType=VARCHAR},
+      </if>
+      <if test="record.choiseD != null" >
+        choise_d = #{record.choiseD,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update choise
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      answer = #{record.answer,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      choise_a = #{record.choiseA,jdbcType=VARCHAR},
+      choise_b = #{record.choiseB,jdbcType=VARCHAR},
+      choise_c = #{record.choiseC,jdbcType=VARCHAR},
+      choise_d = #{record.choiseD,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="xyz.thishome.onling_ksxt.pojo.Choise" >
+    update choise
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="choiseA != null" >
+        choise_a = #{choiseA,jdbcType=VARCHAR},
+      </if>
+      <if test="choiseB != null" >
+        choise_b = #{choiseB,jdbcType=VARCHAR},
+      </if>
+      <if test="choiseC != null" >
+        choise_c = #{choiseC,jdbcType=VARCHAR},
+      </if>
+      <if test="choiseD != null" >
+        choise_d = #{choiseD,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xyz.thishome.onling_ksxt.pojo.Choise" >
+    update choise
+    set title = #{title,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      choise_a = #{choiseA,jdbcType=VARCHAR},
+      choise_b = #{choiseB,jdbcType=VARCHAR},
+      choise_c = #{choiseC,jdbcType=VARCHAR},
+      choise_d = #{choiseD,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

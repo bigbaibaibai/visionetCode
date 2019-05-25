@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性和监听</title>
+</head>
+<body>
+
+<div id="demo">
+    <input type="text" v-model="firstName">
+    <input type="text" v-model="lastName">
+    <!--    <p v-model="fullName"></p>-->
+    <input type="text" v-model="fullName1">
+    <input type="text" v-model="fullName2">
+    <input type="text" v-model="fullName3">
+
+</div>
+
+<script type="application/javascript" src="../js/vue.js"></script>
+<script type="application/javascript">
+
+    var demo = new Vue({
+        el: "#demo",
+        data: {
+            firstName: "",
+            lastName: "",
+            fullName2: ""
+        },
+        computed: {
+            fullName1() {
+                console.log("调用");
+                return this.firstName + " " + this.lastName;
+            },
+            fullName3: {
+                //监听值是否需要重新读取
+                get() {
+                    return this.firstName + " " + this.lastName;
+                },
+                //监听属性值被改变，这里可以有两个参数，一个是改变前的值，另一个是改变后的值
+                set(value) {
+                    console.log(value);
+                }
+            }
+
+        },
+        watch: {
+            //监视的属性：属性改变后的回调函数
+            //参数为改变后的值和改变前的值，如果只需要改变后的值（newValue），则只需要写一个参数即可
+            firstName: function (newValue, oldValue) {
+                this.fullName2 = newValue + " " + this.lastName;
+            }
+        }
+    });
+    //可以使用$watch方法监听一个属性
+    //在这里value表示改变后的值
+    demo.$watch("lastName", function (value) {
+        this.fullName2 = this.firstName + " " + value;
+    });
+
+</script>
+</body>
+</html>

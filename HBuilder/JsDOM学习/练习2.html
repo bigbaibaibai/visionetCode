@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script type="text/javascript">
+			window.onload=function(){
+				//一、通过id获取元素节点(获取的是一个元素节点)
+				var city=document.getElementById("city");
+				alert(city);
+				
+				//二、通过元素名获取元素节点(获取的是一个元素节点的数组)
+				//1.获取所有li节点
+				var lis=document.getElementsByTagName("li");
+				alert(lis.length);
+				//2.获取指定id下的指定元素名的所有节点
+				var cityLis=document.getElementById("city").getElementsByTagName("li");
+				alert(cityLis.length);
+				
+				//三、通过name获取节点(获取的是一个元素节点的数组)
+				var gender=document.getElementsByName("gender");
+				alert(gender.length);
+				
+				//四、通过class获取节点(获取的是一个元素节点的数组)
+				var games=document.getElementsByClassName("game");
+				alert(games.length);
+				
+				
+				
+				//操作属性节点
+				//1.获取元素节点
+				var name=document.getElementById("name");
+				//2.获取属性值
+				alert(name.value);
+				//3.设置属性值
+				name.value="我是大好人";
+			}
+		</script>
+	</head>
+	<body>
+		<h4>你喜欢哪个城市？</h4>
+		<ul id="city">
+			<li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br /><br />
+		<h4>你喜欢哪款单击游戏</h4>
+		<ul>
+			<li class="game">红警</li>
+			<li class="game">实况</li>
+			<li class="game">极品飞车</li>
+			<li class="game">魔兽</li>
+		</ul>
+		
+		<br /><br />
+		gender
+		<input type="radio" name="gender" value="male" />Male
+		<input type="radio" name="gender" value="female" />Female
+		<br /><br />
+		姓名：<input type="text" id="name"/>
+	</body>
+</html>

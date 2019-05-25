@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/list.css">
+		<link rel="icon" href="./images/icon.png">
+		<title>分类列表</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse _header">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					 aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="index.html"><img src="images/logo.jpg" alt="..."></a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="书名 作者 关键字">
+						</div>
+						<button type="submit" class="btn btn-default">搜索</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="cart"><a href="shoppingcart.html">我的购物车</a></li>
+						<li class="order"><a href="order.html">我的订单</a></li>
+						<li class="login"><a id="login_model_controll" href="javascript:;" data-toggle="modal" data-target="#my_model">登录/注册</a></li>
+						<li class="personInfo"><a href="./user.html">个人信息</a></li>
+						<li class="exit"><a href="javascript:;">退出</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+		<!-- 栅格布局 -->
+
+		<div class="container text-center _beijing">
+			<h3 class="kehuan"></h3>
+			<div class="container">
+				<div class="col-md-3">
+					<div class="thumbnail _bookinfo">
+						<img src="images/4.jpg" alt="...">
+						<div class="caption ">
+							<p> 价值规律-小胖</p>
+							<p class="_jiage"><a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-shopping-cart _caryanse">加入购物车</span></a>￥55.90</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="thumbnail _bookinfo">
+						<img src="images/4.jpg" alt="...">
+						<div class="caption ">
+							<p> 价值规律-小胖</p>
+							<p class="_jiage"><a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-shopping-cart _caryanse">加入购物车</span></a>￥55.90</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 设置分页 -->
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+					<li>
+						<a href="javascript:;" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="pageNum active"><a href="javascript:;">1</a></li>
+					<li class="pageNum"><a href="javascript:;">2</a></li>
+					<li class="pageNum"><a href="javascript:;">3</a></li>
+					<li>
+						<a href="javascript:;" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+		</div>
+
+		<!-- 模态框 -->
+
+		<div id="my_model" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+
+				<div class="login-page">
+					<div class="form">
+						<button type="button" class="close _close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h1>小灰书吧</h1>
+						<form class="register-form _modal_form" id="register_form">
+							<input placeholder="用户名" name="userName">
+							<input type="password" placeholder="密码" name="passWord">
+							<input placeholder="邮箱" name="email">
+							<button id="add_btn">注册</button>
+							<p class="message">已有账号? <a href="javascript:">立即登录</a></p>
+						</form>
+						<form class="login-form _modal_form" id="login_form">
+							<input placeholder="用户名" name="userName">
+							<input type="password" placeholder="密码" name="passWord">
+							<button id="login_btn">登录</button>
+							<p class="message">还没有账号？<a href="javascript:">立即注册</a></p>
+						</form>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<script src="js/jquery-3.3.1.js"></script>
+		<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<script src="./js/login.js"></script>
+		<script src="./js/list.js"></script>
+	</body>
+</html>

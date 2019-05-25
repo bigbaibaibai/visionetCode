@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xyz.thishome.yuelitao_book.mapper.UserPayMapper" >
+  <resultMap id="BaseResultMap" type="xyz.thishome.yuelitao_book.pojo.UserPay" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="yh_id" property="yhId" jdbcType="INTEGER" />
+    <result column="dd_id" property="ddId" jdbcType="INTEGER" />
+    <result column="fkshj" property="fkshj" jdbcType="TIMESTAMP" />
+    <result column="dd_je" property="ddJe" jdbcType="INTEGER" />
+    <result column="zhf_fsh" property="zhfFsh" jdbcType="VARCHAR" />
+    <result column="yh" property="yh" jdbcType="VARCHAR" />
+    <result column="yh_lsh" property="yhLsh" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, yh_id, dd_id, fkshj, dd_je, zhf_fsh, yh, yh_lsh
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="xyz.thishome.yuelitao_book.pojo.UserPayExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_pay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_pay
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_pay
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="xyz.thishome.yuelitao_book.pojo.UserPayExample" >
+    delete from user_pay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="xyz.thishome.yuelitao_book.pojo.UserPay" >
+    insert into user_pay (Id, yh_id, dd_id, 
+      fkshj, dd_je, zhf_fsh, 
+      yh, yh_lsh)
+    values (#{id,jdbcType=INTEGER}, #{yhId,jdbcType=INTEGER}, #{ddId,jdbcType=INTEGER}, 
+      #{fkshj,jdbcType=TIMESTAMP}, #{ddJe,jdbcType=INTEGER}, #{zhfFsh,jdbcType=VARCHAR}, 
+      #{yh,jdbcType=VARCHAR}, #{yhLsh,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="xyz.thishome.yuelitao_book.pojo.UserPay" >
+    insert into user_pay
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="yhId != null" >
+        yh_id,
+      </if>
+      <if test="ddId != null" >
+        dd_id,
+      </if>
+      <if test="fkshj != null" >
+        fkshj,
+      </if>
+      <if test="ddJe != null" >
+        dd_je,
+      </if>
+      <if test="zhfFsh != null" >
+        zhf_fsh,
+      </if>
+      <if test="yh != null" >
+        yh,
+      </if>
+      <if test="yhLsh != null" >
+        yh_lsh,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="yhId != null" >
+        #{yhId,jdbcType=INTEGER},
+      </if>
+      <if test="ddId != null" >
+        #{ddId,jdbcType=INTEGER},
+      </if>
+      <if test="fkshj != null" >
+        #{fkshj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ddJe != null" >
+        #{ddJe,jdbcType=INTEGER},
+      </if>
+      <if test="zhfFsh != null" >
+        #{zhfFsh,jdbcType=VARCHAR},
+      </if>
+      <if test="yh != null" >
+        #{yh,jdbcType=VARCHAR},
+      </if>
+      <if test="yhLsh != null" >
+        #{yhLsh,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="xyz.thishome.yuelitao_book.pojo.UserPayExample" resultType="java.lang.Integer" >
+    select count(*) from user_pay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_pay
+    <set >
+      <if test="record.id != null" >
+        Id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.yhId != null" >
+        yh_id = #{record.yhId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ddId != null" >
+        dd_id = #{record.ddId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fkshj != null" >
+        fkshj = #{record.fkshj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ddJe != null" >
+        dd_je = #{record.ddJe,jdbcType=INTEGER},
+      </if>
+      <if test="record.zhfFsh != null" >
+        zhf_fsh = #{record.zhfFsh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yh != null" >
+        yh = #{record.yh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yhLsh != null" >
+        yh_lsh = #{record.yhLsh,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_pay
+    set Id = #{record.id,jdbcType=INTEGER},
+      yh_id = #{record.yhId,jdbcType=INTEGER},
+      dd_id = #{record.ddId,jdbcType=INTEGER},
+      fkshj = #{record.fkshj,jdbcType=TIMESTAMP},
+      dd_je = #{record.ddJe,jdbcType=INTEGER},
+      zhf_fsh = #{record.zhfFsh,jdbcType=VARCHAR},
+      yh = #{record.yh,jdbcType=VARCHAR},
+      yh_lsh = #{record.yhLsh,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="xyz.thishome.yuelitao_book.pojo.UserPay" >
+    update user_pay
+    <set >
+      <if test="yhId != null" >
+        yh_id = #{yhId,jdbcType=INTEGER},
+      </if>
+      <if test="ddId != null" >
+        dd_id = #{ddId,jdbcType=INTEGER},
+      </if>
+      <if test="fkshj != null" >
+        fkshj = #{fkshj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ddJe != null" >
+        dd_je = #{ddJe,jdbcType=INTEGER},
+      </if>
+      <if test="zhfFsh != null" >
+        zhf_fsh = #{zhfFsh,jdbcType=VARCHAR},
+      </if>
+      <if test="yh != null" >
+        yh = #{yh,jdbcType=VARCHAR},
+      </if>
+      <if test="yhLsh != null" >
+        yh_lsh = #{yhLsh,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xyz.thishome.yuelitao_book.pojo.UserPay" >
+    update user_pay
+    set yh_id = #{yhId,jdbcType=INTEGER},
+      dd_id = #{ddId,jdbcType=INTEGER},
+      fkshj = #{fkshj,jdbcType=TIMESTAMP},
+      dd_je = #{ddJe,jdbcType=INTEGER},
+      zhf_fsh = #{zhfFsh,jdbcType=VARCHAR},
+      yh = #{yh,jdbcType=VARCHAR},
+      yh_lsh = #{yhLsh,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

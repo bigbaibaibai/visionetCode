@@ -1,0 +1,221 @@
+*{
+	margin:0;
+	padding: 0;
+}
+.cartWrap{
+    margin-top: 10px;
+    margin-bottom: 100px;
+	/* background-color:#111; */
+
+}
+.cart{
+    width: 990px;
+    margin: 0 auto;
+}
+.cart .cartHead{
+    height: 40px;
+    line-height: 32px;
+    margin: 0 0 10px;
+    background: #999;
+    border: 1px solid #e9e9e9;
+	padding-left: 50px;
+}
+.cart .cartHead div{
+    display: inline-block;
+}
+.cart .cartHead .goods{
+    /* width: 208px; */width: 240px;
+	margin-left: 45px;
+}
+.cart .cartHead .price{
+    width: 290px;
+    padding-right: 40px;
+    text-align: right;
+}
+.cart .cartHead .num{
+	margin-left: 7px;
+    width: 80px;
+    text-align: center;
+}
+.cart .cartHead .sum{
+    width: 100px;
+    padding-right: 40px;
+    text-align: right;
+}
+.cart .cartHead .action{
+	margin-left: 10px;
+    width: 75px;
+}
+.cart .cartList{
+    padding: 0 0 1px 78px;
+    line-height: 20px;
+    background: #fff;
+}
+.cart .cartList .itemForm{
+    border-bottom: 1px solid #999;
+}
+.cart .cartList .items{
+    display: inline-block;
+    padding: 15px 0px 10px;
+    vertical-align: middle;
+}
+.cart .cartList .checkbox{
+    width: 30px;
+    min-height: 10px;
+    margin: 0 10px 0 -28px;
+}
+.cart .cartList .goods{
+    width: 300px;
+}
+.cart .cartList .goods .img{
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #eee;
+    margin-right: 10px;
+    background: #fff;
+    text-align: center;
+}
+.cart .cartList .goods .name{
+    display: inline-block;
+    height: 40px;
+    line-height: 20px;
+}
+.cart .cartList .goods .name a{
+    color: #333;
+}
+.cart .cartList .goods .name a:hover{
+    color: #e4393c;
+}
+.cart .cartList .price{
+    width: 280px;
+    font-family: verdana;
+    padding-right: 40px;
+    text-align: right;
+}
+.cart .cartList .price strong{
+    color: #333;
+    font-weight: 400;
+	color:red;
+}
+.cart .cartList .num{
+    width: 80px;
+}
+.cart .cartList .num .numBox{
+    position: relative;
+    height: 22px;
+    width: 80px;
+}
+.cart .cartList .num .numBox a{
+    display: inline-block;
+    border: 1px solid #cacbcb;
+    border-right: 0;
+    height: 18px;
+    line-height: 18px;
+    padding: 1px 0;
+    width: 16px;
+    text-align: center;
+    color: #666;
+    margin: 0;
+    background: #fff;
+}
+.cart .cartList .num .numBox .right{
+    position: absolute;
+    right: 6px;
+    border: 1px solid #cacbcb;
+    border-left: none;
+}
+.cart .cartList .num .numBox input{
+    position: absolute;
+    left: 16px;
+    top: 0;
+    border: 1px solid #cacbcb;
+    width: 42px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    padding: 1px;
+    font-size: 12px;
+    font-family: verdana;
+    outline: none;
+}
+.cart .cartList .sum{
+    width: 100px;
+    padding-right: 40px;
+    text-align: right;
+    font-family: verdana;
+	color: red;
+}
+.cart .cartList .opt{
+    width: 75px;
+}
+.cart .cartList .opt a{
+    color: #666;
+}
+.cart .cartList .opt a:hover{
+    color: #e4393c;
+}
+.cart .cartMoney{
+    width: 988px;
+    height: 55px;
+    border: 1px solid #f0f0f0;
+    margin-top: 20px;
+	background-color:#FAEBCC;
+}
+.cart .cartMoney .selectAll{
+    display: inline-block;
+    vertical-align: top;
+    height: 18px;
+    line-height: 18px;
+    padding: 16px 0 16px 11px;
+    margin-left: 20px;
+}
+.cart .cartMoney .selectAll input{
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.cart .cartMoney .toolRight{
+    display: inline-block;
+    width: 880px;
+    height: 50px;
+    line-height: 50px;
+    text-align: right;
+}
+.cart .cartMoney .toolRight div{
+    display: inline-block;
+	padding: 0;
+}
+.cart .cartMoney .toolRight .selSum{
+    color: #999;
+}
+.cart .cartMoney .toolRight .selSum em{
+    color: #e4393c;
+    font-style: normal;
+    font-family: verdana;
+    font-weight: 700;
+    margin: 0 3px;
+}
+.cart .cartMoney .toolRight .priceSum{
+    margin: 0 20px 0 20px;
+    color: #999;
+}
+.cart .cartMoney .toolRight .priceSum em{
+    font-style: normal;
+    font-family: verdana;
+    font-size: 16px;
+    color: #e4393c;
+    font-weight: 700;
+}
+.cart .cartMoney .toolRight .btn a{
+    display: block;
+    width: 96px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    background: #e54346;
+}
+.cart .cartMoney .toolRight #goToPayTrigger{
+	display: none;
+}

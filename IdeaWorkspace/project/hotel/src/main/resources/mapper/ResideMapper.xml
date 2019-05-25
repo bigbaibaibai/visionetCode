@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xyz.thishome.hotel.mapper.ResideMapper" >
+  <resultMap id="BaseResultMap" type="xyz.thishome.hotel.pojo.Reside" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="host_number" property="hostNumber" jdbcType="INTEGER" />
+    <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="check_in_time" property="checkInTime" jdbcType="TIMESTAMP" />
+    <result column="departure_time" property="departureTime" jdbcType="TIMESTAMP" />
+    <result column="appointment_time" property="appointmentTime" jdbcType="TIMESTAMP" />
+    <result column="reside_status" property="resideStatus" jdbcType="INTEGER" />
+    <result column="lastname" property="lastname" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, user_id, host_number, creation_time, check_in_time, departure_time, appointment_time, 
+    reside_status, lastname, user_phone
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="xyz.thishome.hotel.pojo.ResideExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from reside
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from reside
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from reside
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="xyz.thishome.hotel.pojo.ResideExample" >
+    delete from reside
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="xyz.thishome.hotel.pojo.Reside" >
+    insert into reside (Id, user_id, host_number, 
+      creation_time, check_in_time, departure_time, 
+      appointment_time, reside_status, lastname, 
+      user_phone)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{hostNumber,jdbcType=INTEGER}, 
+      #{creationTime,jdbcType=TIMESTAMP}, #{checkInTime,jdbcType=TIMESTAMP}, #{departureTime,jdbcType=TIMESTAMP}, 
+      #{appointmentTime,jdbcType=TIMESTAMP}, #{resideStatus,jdbcType=INTEGER}, #{lastname,jdbcType=VARCHAR}, 
+      #{userPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="xyz.thishome.hotel.pojo.Reside" >
+    insert into reside
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="hostNumber != null" >
+        host_number,
+      </if>
+      <if test="creationTime != null" >
+        creation_time,
+      </if>
+      <if test="checkInTime != null" >
+        check_in_time,
+      </if>
+      <if test="departureTime != null" >
+        departure_time,
+      </if>
+      <if test="appointmentTime != null" >
+        appointment_time,
+      </if>
+      <if test="resideStatus != null" >
+        reside_status,
+      </if>
+      <if test="lastname != null" >
+        lastname,
+      </if>
+      <if test="userPhone != null" >
+        user_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="hostNumber != null" >
+        #{hostNumber,jdbcType=INTEGER},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkInTime != null" >
+        #{checkInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="departureTime != null" >
+        #{departureTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appointmentTime != null" >
+        #{appointmentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resideStatus != null" >
+        #{resideStatus,jdbcType=INTEGER},
+      </if>
+      <if test="lastname != null" >
+        #{lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="xyz.thishome.hotel.pojo.ResideExample" resultType="java.lang.Integer" >
+    select count(*) from reside
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update reside
+    <set >
+      <if test="record.id != null" >
+        Id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.hostNumber != null" >
+        host_number = #{record.hostNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.creationTime != null" >
+        creation_time = #{record.creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.checkInTime != null" >
+        check_in_time = #{record.checkInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.departureTime != null" >
+        departure_time = #{record.departureTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.appointmentTime != null" >
+        appointment_time = #{record.appointmentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.resideStatus != null" >
+        reside_status = #{record.resideStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastname != null" >
+        lastname = #{record.lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userPhone != null" >
+        user_phone = #{record.userPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update reside
+    set Id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      host_number = #{record.hostNumber,jdbcType=INTEGER},
+      creation_time = #{record.creationTime,jdbcType=TIMESTAMP},
+      check_in_time = #{record.checkInTime,jdbcType=TIMESTAMP},
+      departure_time = #{record.departureTime,jdbcType=TIMESTAMP},
+      appointment_time = #{record.appointmentTime,jdbcType=TIMESTAMP},
+      reside_status = #{record.resideStatus,jdbcType=INTEGER},
+      lastname = #{record.lastname,jdbcType=VARCHAR},
+      user_phone = #{record.userPhone,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="xyz.thishome.hotel.pojo.Reside" >
+    update reside
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="hostNumber != null" >
+        host_number = #{hostNumber,jdbcType=INTEGER},
+      </if>
+      <if test="creationTime != null" >
+        creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkInTime != null" >
+        check_in_time = #{checkInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="departureTime != null" >
+        departure_time = #{departureTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appointmentTime != null" >
+        appointment_time = #{appointmentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resideStatus != null" >
+        reside_status = #{resideStatus,jdbcType=INTEGER},
+      </if>
+      <if test="lastname != null" >
+        lastname = #{lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xyz.thishome.hotel.pojo.Reside" >
+    update reside
+    set user_id = #{userId,jdbcType=INTEGER},
+      host_number = #{hostNumber,jdbcType=INTEGER},
+      creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      check_in_time = #{checkInTime,jdbcType=TIMESTAMP},
+      departure_time = #{departureTime,jdbcType=TIMESTAMP},
+      appointment_time = #{appointmentTime,jdbcType=TIMESTAMP},
+      reside_status = #{resideStatus,jdbcType=INTEGER},
+      lastname = #{lastname,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

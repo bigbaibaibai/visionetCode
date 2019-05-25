@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染循环</title>
+</head>
+<body>
+
+<div id="demo">
+
+    <ul>
+        <li v-for="(value,index) in persons" :key="index">
+            {{index}} | {{value.name}} | {{value.age}}
+            <button @click="deleteP(index)">删除</button>
+            <button @click="updateP(index)">修改</button>
+        </li>
+
+        <li v-for="(value,key) in persons[0]" :key="key">
+            {{key}} - {{value}}
+        </li>
+    </ul>
+
+</div>
+
+<script type="application/javascript" src="../js/vue.js"></script>
+<script type="application/javascript">
+    var demo = new Vue({
+        el: "#demo",
+        data: {
+            persons: [{
+                "name": "小明",
+                "age": 19
+            }, {
+                "name": "小红",
+                "age": 18
+            }, {
+                "name": "小白",
+                "age": 20
+            }]
+        },
+        methods: {
+            deleteP(index) {
+                //1表示删除1个元素，从index开始
+                this.persons.splice(index, 1);
+            },
+            updateP(index) {
+
+            }
+        }
+    });
+</script>
+</body>
+</html>

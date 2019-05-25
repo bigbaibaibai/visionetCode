@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- package声明pojo类所在的包，如果不写那么在class中需要指明pojo类所在的包
+ 	schema指数据库模式， 一个模式下可以有多张表
+ -->
+<hibernate-mapping package="xyz.thishome.pojo">
+    <!--
+      class：指映射一个pojo类
+        1） 提供了公共的无参构造方法-通过反射产生对象
+        2）属性用private修饰，并且生成对应的get/set方法
+        3）类不能用final 来修饰-hibernate会产生代理类（cglib）
+        4）类需要指明标识
+      name：表示pojo类名
+      table：表示pojo类对应数据库中的表名；如果不写默认是类名
+     -->
+    <class name="News" table="news" select-before-update="true">
+
+        <id name="id" column="id" type="java.lang.Integer">
+
+            <generator class="native"></generator>
+        </id>
+        <!-- 实体类属性
+        name：指明pojo类属性名称（区分大小写）
+        column：实体类属性对应的数据库表列名
+        -->
+        <property name="title">
+            <column name="title"/>
+        </property>
+        <property name="author">
+            <column name="author"/>
+        </property>
+        <property name="date">
+            <column name="date"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+</head>
+<body>
+
+<div id="demo">
+    <!--  if ok为true，则显示成功  -->
+    <p v-if="ok">成功</p>
+    <!--  否则显示失败  -->
+    <p v-else>失败</p>
+    <!--  if ok为true，则显示  -->
+    <p v-show="ok">真的成功了</p>
+    <!--  if ok 为false，则显示   -->
+    <p v-show="!ok">真的失败了</p>
+    <button @click="convert">转换</button>
+</div>
+
+<script type="application/javascript" src="../js/vue.js"></script>
+<script type="application/javascript">
+    var demo = new Vue({
+        el: "#demo",
+        data: {
+            ok: true
+        },
+        methods: {
+            convert() {
+                this.ok = !this.ok;
+            }
+        }
+    });
+</script>
+</body>
+</html>

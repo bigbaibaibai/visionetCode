@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript">
+			$(function() {
+				function deleteEmpl(a) {
+					var $tr = $(a).parent().parent();
+					var textContent = $tr.find("td:eq(0)").text();
+					textContent = $.trim(textContent);
+					var flag = confirm("您确定要删除" + textContent + "员工信息吗");
+					if(flag) {
+						$tr.remove();
+					}
+					return false;
+				};
+				$(".table a").click(function() {
+					deleteEmpl(this);
+					return false;
+				});
+				$(":submit").click(function() {
+					$("<tr></tr>").append("<td>" + $(":text[name=name]").val() + "</td>")
+						.append("<td>" + $(":text[name=email]").val() + "</td>")
+						.append("<td>" + $(":text[name=salary]").val() + "</td>")
+						.append("<td><a href=\"###\">Delete</a></td>")
+						.appendTo(".table")
+						.find("a").click(function() {
+							deleteEmpl(this);
+							return false;
+						});
+				});
+			})
+		</script>
+		<style type="text/css">
+			div,
+			table {
+				text-align: center;
+			}
+			
+			table {
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<h4>添加新员工</h4> name : <input type="text" name="name" /> email : <input type="text" name="email" /> salary : <input type="text" name="salary" /><br /><br />
+			<input type="submit" value="submit" /><br />
+			<br />
+			<hr /><br /><br />
+			<table class="table" border="1" cellspacing="0" cellpadding="10">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Salary</th>
+					<th></th>
+				</tr>
+				<tr>
+					<td>Tom</td>
+					<td>tom@tom.com</td>
+					<td>5000</td>
+					<td>
+						<a href="###">Delete</a>
+					</td>
+				</tr>
+				<tr>
+					<td>Jerry</td>
+					<td>jerry@sohu.com</td>
+					<td>8000</td>
+					<td>
+						<a href="###">Delete</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/cart.css">
+		<link rel="icon" href="./images/icon.png">
+		<title>我的购物车</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse _header">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					 aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="index.html"><img src="images/logo.jpg" alt="..."></a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="order"><a href="order.html">我的订单</a></li>
+						<li class="login"><a id="login_model_controll" href="javascript:;" data-toggle="modal" data-target="#my_model">登录/注册</a></li>
+						<li class="personInfo"><a href="./user.html">个人信息</a></li>
+						<li class="exit"><a href="javascript:;">退出</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+		<div class="cartWrap">
+			<div class="cart">
+				<div class="cartCon">
+					<div class="cartHead">
+						<div class="goods">商品</div>
+						<div class="price">单价</div>
+						<div class="num">数量</div>
+						<div class="sum">小计</div>
+						<div class="action">操作</div>
+					</div>
+					<div class="cartList">
+						<div class="itemForm">
+							<div class="items checkbox"><input type="checkbox" name="bookIds"></div>
+							<div class="items goods">
+								<div class="img">
+									<a href="javascript:;">
+										<img src="images/6.jpg" width="80px" height="80px">
+									</a>
+								</div>
+								<div class="name"><a href="javascript:;">拥有一个你说了算的人生-小胖</a></div>
+							</div>
+							<div class="items price"><strong>¥80.11</strong></div>
+							<div class="items num">
+								<div class="numBox">
+									<a href="javascript:;" class="left">-</a><input type="text" value="1"><a href="javascript:;" class="right">+</a>
+								</div>
+							</div>
+							<div class="items sum"><strong>¥80.11</strong></div>
+							<div class="items opt"><a href="javascript:;">删除</a></div>
+						</div>
+						<div class="itemForm">
+							<div class="items checkbox"><input type="checkbox" name="bookIds"></div>
+							<div class="items goods">
+								<div class="img">
+									<a href="javascript:;">
+										<img src="images/7.jpg" width="80px" height="80px">
+									</a>
+								</div>
+								<div class="name"><a href="javascript:;">365天涂鸦日志-小胖</a></div>
+							</div>
+							<div class="items price"><strong>¥80.10</strong></div>
+							<div class="items num">
+								<div class="numBox">
+									<a href="javascript:;" class="left">-</a><input type="text" value="1"><a href="javascript:;" class="right">+</a>
+								</div>
+							</div>
+							<div class="items sum"><strong>¥80.10</strong></div>
+							<div class="items opt"><a href="javascript:;">删除</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="cartMoney">
+					<div class="selectAll">
+						<input type="checkbox">全选
+					</div>
+					<div class="toolRight">
+						<div class="selSum">已选择<em>0</em>件商品</div>
+						<div class="priceSum">总价：<em>¥0.00</em></div>
+						<div class="btn"><a href="#" id="a_go_pay">去结算</a><a href="#" id="goToPayTrigger" data-toggle="modal" data-target="#pay_modal"></a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mask"></div>
+
+		<!-- 模态框 -->
+
+		<div id="my_model" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+
+				<div class="login-page">
+					<div class="form">
+						<button type="button" class="close _close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h1>小灰书吧</h1>
+						<form class="register-form _modal_form" id="register_form">
+							<input placeholder="用户名" name="userName">
+							<input type="password" placeholder="密码" name="passWord">
+							<input placeholder="邮箱" name="email">
+							<button id="add_btn">注册</button>
+							<p class="message">已有账号? <a href="javascript:">立即登录</a></p>
+						</form>
+						<form class="login-form _modal_form" id="login_form">
+							<input placeholder="用户名" name="userName">
+							<input type="password" placeholder="密码" name="passWord">
+							<button id="login_btn">登录</button>
+							<p class="message">还没有账号？<a href="javascript:">立即注册</a></p>
+						</form>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
+
+		<div id="pay_modal" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">支付</h4>
+					</div>
+					<div class="modal-body">
+						<form action="#" method="post">
+
+							<div class="form-group">
+								<label for="address">派送地址：</label>
+								<input type="text" class="form-control" id="address" value="太康县" disabled>
+							</div>
+							<hr>
+
+							<span><b>支付方式：</b></span>
+
+							<br>
+							<br>
+
+							<div>货到付款</div>
+
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary">提交</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
+
+		<script src="js/jquery-3.3.1.js"></script>
+		<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/login.js"></script>
+		<script src="./js/cart.js"></script>
+	</body>
+</html>

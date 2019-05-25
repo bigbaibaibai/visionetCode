@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法</title>
+</head>
+<body>
+
+<div id="app">
+    <p>{{ msg }}</p>
+    <img v-bind:src="imgUrl">
+    <img :src="imgUrl">
+
+    <button v-on:click="test">test</button>
+    <button @click="test">test</button>
+    <button @click="test1('123')">test1</button>
+    <button @click="test1(msg)">test1</button>
+
+</div>
+
+<script type="application/javascript" src="../js/vue.js"></script>
+<script type="application/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {   //数据
+            msg: "这是一条消息",
+            imgUrl: "https://www.google.com/logos/doodles/2019/omar-khayyams-971st-birthday-6192814449754112.2-s.png"
+        },
+        methods: {   // 绑定事件方法
+            test() {
+                alert("hello");
+            },
+            test1(string) {
+                alert(string);
+            }
+        }
+    });
+</script>
+</body>
+</html>

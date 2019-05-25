@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				function anmateIt(){
+					$(".mover").slideToggle("slow",anmateIt);
+				};
+				anmateIt();
+				
+				$("#btn1").click(function(){
+					$("div[title]").css("background","#ADFF2F");
+				});
+				$("#btn2").click(function(){
+					$("div[title='test']").css("background","#ADFF2F");
+				});
+				$("#btn3").click(function(){
+					$("div[title!='test']").css("background","#ADFF2F");
+				});
+				$("#btn4").click(function(){
+					$("div[title^='te']").css("background","#ADFF2F");
+				});
+				$("#btn5").click(function(){
+					$("div[title$='est']").css("background","#ADFF2F");
+				});
+				$("#btn6").click(function(){
+					$("div[title*='es']").css("background","#ADFF2F");
+				});
+				$("#btn7").click(function(){
+					$("div[id][title*='es']").css("background","#ADFF2F");
+				});
+			})
+			
+			
+		</script>
+		<style type="text/css">
+			*{
+				font-size: 12px;
+			}
+			div,span{
+				background-color:#999 ;
+				width: 150px;
+				height: 150px;
+				margin: 5px;
+				font-size: 14px;
+				border: 1px solid black;
+				float: left;
+			}
+			.mini{
+				width: 60px;
+				height: 60px;
+				margin: 5px;
+				font-size: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<input id="btn1" type="button" value="选取含有属性title的div元素"/>
+		<input id="btn2"  type="button" value="选取属性title值等于test的div元素"/>
+		<input id="btn3"  type="button" value="选取属性title值不等于test的div元素(没有属性title的也将被选中)"/>
+		<input id="btn4"  type="button" value="选取属性title值以te开始的div元素"/>
+		<input id="btn5"  type="button" value="选取属性title值以est结束的div元素"/><br />
+		<input id="btn6"  type="button" value="选取属性title值含有es的div元素"/>
+		<input id="btn7"  type="button" value="组合属性选择器首先选取属性id的div元素，然后在结果中选取属性title值含有es的div元素"/><br />
+		<div id="one" class="one">
+			id为one，class为one的div
+			<div class="mini">
+				class为mini
+			</div>
+		</div>
+		<div id="two" class="one" title="test">
+			id为two，class为one，title为test的div
+			<div class="mini" title="other">class为mini,title为other</div>
+			<div class="mini" title="test">class为mini,title为test</div>
+		</div>
+		<div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div style="width: 60px;height: 60px;"></div>
+		</div>
+		<div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini" title="tesst">class为mini,title为tesst</div>
+		</div>
+		<div>
+			包含input的type为“hidden”的div
+			<input type="hidden"/>
+		</div>
+		<div class="mover">
+			正在执行动画的div元素
+		</div>
+	</body>
+</html>

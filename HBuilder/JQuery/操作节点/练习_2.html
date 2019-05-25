@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript">
+			$(function() {
+				$(".text").focus(function() {
+					var $this=$(this);
+					if($this.val()==this.defaultValue){
+						$this.val("")
+					}
+				}).blur(function() {
+					var $this=$(this);
+					if($this.val().trim() == "") {
+						$this.val(this.defaultValue);
+					}
+				});
+				
+				$(".btn1").click(function(){
+					$(".select1").val("选择3号");
+				});
+				$(".btn2").click(function(){
+					$(".select2").val(["选择2号","选择4号"]);
+				});
+				$(".btn3").click(function(){
+					$(":checkbox[name=checkbox]").val(["check2","check4"]);
+				});
+				$(".btn4").click(function(){
+					//必须使用数组
+					$(":radio[name=radio]").val(["radio2"]);
+				});
+				$(".btn5").click(function(){
+					$(":checked").each(function(){
+						alert($(this).val());
+					});
+				});
+				
+			})
+		</script>
+	</head>
+
+	<body>
+		<input type="text" class="text" value="请输入邮箱地址" /> <br />
+		<input type="text" class="text" value="请输入邮箱密码" /><br />
+		<input type="submit" value="登录" /><br /><br /><br />
+
+		<input type="submit" value="使单选下拉框的“选择3号”被选中" class="btn1" />
+		<input type="submit" value="使多选下拉框选中的“选择2号”和“选择4号”被选中"  class="btn2"/><br />
+		<input type="submit" value="使多选框的“多选2”和“多选4”被选中" class="btn3" />
+		<input type="submit" value="使单选框的“单选2”被选中" class="btn4" /><br />
+		<input type="submit" value="打印已经被选中的值" class="btn5" />
+		<br /><br />
+		<select class="select1">
+			<option value="选择1号">选择1号</option>
+			<option value="选择2号">选择2号</option>
+			<option value="选择3号">选择3号</option>
+			<option value="选择4号">选择4号</option>
+			<option value="选择5号">选择5号</option>
+		</select>
+		<select multiple="multiple" size="7" class="select2">
+			<option value="选择1号">选择1号</option>
+			<option value="选择2号">选择2号</option>
+			<option value="选择3号">选择3号</option>
+			<option value="选择4号">选择4号</option>
+			<option value="选择5号">选择5号</option>
+		</select>
+		<br /><br />
+		<input type="checkbox" name="checkbox" value="check1"/>多选框1
+		<input type="checkbox" name="checkbox" value="check2" />多选框2
+		<input type="checkbox" name="checkbox" value="check3" />多选框3
+		<input type="checkbox" name="checkbox" value="check4" />多选框4
+		<br /><br />
+		<input type="radio" name="radio" value="radio1"/>单选框1
+		<input type="radio" name="radio" value="radio2"/>单选框2
+		<input type="radio" name="radio" value="radio3"/>单选框3
+	</body>
+
+</html>

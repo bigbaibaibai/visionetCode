@@ -1,0 +1,91 @@
+
+
+._order ._center {
+	height: auto;
+	width: 1300px;
+	margin: 0 auto;
+	/* background-color: #aaa; */
+}
+
+._order ._center ._box {
+	width: 900px;
+	margin: 0 auto;
+	border-radius: 10px;
+}
+
+._order ._center ._box ._order_one {
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	color: #333;
+	font-size: 17px;
+	background-color: #ffc;
+	border:1px solid #333;
+	border-radius: 10px;
+
+}
+
+._order ._center ._box ._order_one ._order_header {
+	height: 40px;
+	position: relative;
+}
+
+._order ._center ._box ._order_one ._orderId {
+	position: absolute;
+	top: 5px;
+	left: 10px;
+}
+
+._order ._center ._box ._order_one ._time {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
+
+._order ._center ._box ._order_one ._box_item {
+	position: relative;
+	width: 700px;
+	margin: 10px auto;
+	height: 100px;
+	border: 2px solid #b97a57;
+	border-radius: 10px;
+	background-color:#fff;
+}
+
+
+._order ._center ._box ._order_one ._box_item ._left{
+	width: 200px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+._order ._center ._box ._order_one ._box_item ._left img{
+	margin:10px 0 0 50px ;
+	border: 1px solid white;
+	border-radius: 5px;
+	width: 60px;
+	height: 80px;
+}
+
+._order ._center ._box ._order_one ._box_item ._right{
+	/* background-color: #006400; */
+	width: 500px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+._order ._center ._box ._order_one ._box_item ._right span{
+	display: block;
+	margin:6px 0;
+}
+._order ._center ._box ._order_one ._count{
+	height: 25px;
+}
+._order ._center ._box ._order_one ._shop_all{
+	margin-right: 8px;
+	float: right;
+	color:red;
+}
+
+
