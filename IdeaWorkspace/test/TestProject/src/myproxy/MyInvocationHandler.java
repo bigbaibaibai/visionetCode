@@ -10,7 +10,7 @@ public class MyInvocationHandler implements InvocationHandler {
         this.bird = bird;
     }
 
-    @Override
+    @Override   //第一个参数为代理对象，第二个参数为方法对象，后面的参数为方法参数
     public Object invoke(Object proxy, Method method, Object... args) {
         System.out.println(System.currentTimeMillis());
         try {

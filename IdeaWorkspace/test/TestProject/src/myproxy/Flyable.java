@@ -2,6 +2,6 @@ package myproxy;
 
 public interface Flyable {
 
-    void fly();
+    void fly(long time);
 
 }
