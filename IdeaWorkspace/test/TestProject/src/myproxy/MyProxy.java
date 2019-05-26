@@ -95,18 +95,17 @@ public class MyProxy {
             String classUrl = "C:\\Users\\bai\\Desktop\\myproxy";
 
             //把java文件写到执行路径下（默认会把包生成文件夹）
-//            javaFile.writeTo(new File(baseUrl));
+            javaFile.writeTo(new File(classUrl));
             //把java文件编译成class
             //1.获取javac编译器
             JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
             //2.通过javac编译器获取一个编译java文件管理器
             StandardJavaFileManager manager = compiler.getStandardFileManager(null, null, null);
 
-//          Iterable<? extends JavaFileObject> it = manager.getJavaFileObjects(baseUrl + "\\myproxy\\" + proxyClassName + ".java");
+            Iterable<? extends JavaFileObject> it = manager.getJavaFileObjects(classUrl + "\\myproxy\\" + proxyClassName + ".java");
             //class文件输出路径
             JavaCompiler.CompilationTask task = compiler.getTask(null, manager,
-                    null, null, null,
-                            Arrays.asList(javaFile.toJavaFileObject()));
+                    null, null, null,it);
             task.call();
 
             //加载class文件到jvm中
