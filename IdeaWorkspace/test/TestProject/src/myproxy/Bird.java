@@ -4,6 +4,7 @@ package myproxy;
 public class Bird implements Flyable {
 
     //飞
+    @Override
     public void fly(long time) {
 
         try {

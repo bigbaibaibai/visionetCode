@@ -7,12 +7,12 @@ import java.lang.reflect.Proxy;
 
 public class ProxyTest {
     public static void main(String[] args) {
-        Object o = Proxy.newProxyInstance(ProxyTest.class.getClassLoader(),
-                new Class[]{Flyable.class}, (Object proxy, Method method, Object[] param) ->{
-
-                        return null;
-                    }
-                );
+        Flyable o = (Flyable) Proxy.newProxyInstance(Flyable.class.getClassLoader(),
+                new Class[]{Flyable.class}, (Object proxy, Method method, Object[] param) -> {
+                    return proxy;
+                }
+        );
+        o.fly(1000);
     }
 
 }

@@ -5,22 +5,20 @@ import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 import utils.ClassUtil;
+import utils.FileUtil;
 
 import javax.lang.model.element.Modifier;
 import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileWriter;
+import java.io.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Proxy;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
 //动态生成XXXProxy这代理类，并且动态编译，再通过反射创建对象并加载到内存中
 //动态生成Java源文件并且排版是一个非常繁琐的工作，为了简化操作
@@ -28,9 +26,35 @@ import java.util.Stack;
 //希望 JavaPoet  不要成为你的负担，不理解 JavaPoet 没有关系，你只要把它当成一个Java源码生成工具使用即可。
 public class MyProxy {
 
+    private static final String CLASS_BASE_PATH = "C:\\Users\\bai\\Desktop\\myproxy";
+    private static final String PACKAGE_NAME = "myproxy";
+
     //获取代理对象
     public static <T> T newProxyInstance(Class<T> clazz, InvocationHandler invocationHandler) {
         String proxyClassName = clazz.getSimpleName() + "$MyProxy";
+
+        try {
+            //一、 生成java文件
+            generateProxyJavaFile(clazz, proxyClassName);
+
+            //二、 编译
+            compileJavaFile();
+
+            //三、 加载class文件到jvm中
+            ClassUtil.loadClass(new File(CLASS_BASE_PATH));
+
+            //四、 创建对象并返回
+            Class proxyClass = MyProxy.class.getClassLoader().loadClass(PACKAGE_NAME + "." + proxyClassName);
+            return (T) proxyClass.getConstructor(InvocationHandler.class).newInstance(invocationHandler);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    //生成代理类的java文件
+    private static void generateProxyJavaFile(Class clazz, String proxyClassName) throws IOException {
+
         //动态生成代理类，继承于原类型
         TypeSpec.Builder classBuilder = TypeSpec.classBuilder(proxyClassName).addSuperinterface(clazz);
 
@@ -89,38 +113,30 @@ public class MyProxy {
 
         //生成java文件，第一个参数是包名
 //        String path = MyProxy.class.getResource("/").toString();
-        JavaFile javaFile = JavaFile.builder("myproxy", classBuilder.build()).build();
+        JavaFile javaFile = JavaFile.builder(PACKAGE_NAME, classBuilder.build()).build();
 
-        try {
-            String classUrl = "C:\\Users\\bai\\Desktop\\myproxy";
-
-            //把java文件写到执行路径下（默认会把包生成文件夹）
-            javaFile.writeTo(new File(classUrl));
-            //把java文件编译成class
-            //1.获取javac编译器
-            JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-            //2.通过javac编译器获取一个编译java文件管理器
-            StandardJavaFileManager manager = compiler.getStandardFileManager(null, null, null);
-
-            Iterable<? extends JavaFileObject> it = manager.getJavaFileObjects(classUrl + "\\myproxy\\" + proxyClassName + ".java");
-            //class文件输出路径
-            JavaCompiler.CompilationTask task = compiler.getTask(null, manager,
-                    null, null, null,it);
-            task.call();
-
-            //加载class文件到jvm中
-            ClassUtil.loadClass(new File(classUrl));
-
-            //创建对象
-            Class proxyClass = MyProxy.class.getClassLoader().loadClass("myproxy." + proxyClassName);
-
-            return (T) proxyClass.getConstructor(InvocationHandler.class).newInstance(invocationHandler);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        //把java文件写到执行路径下（默认会把包生成文件夹）
+        javaFile.writeTo(new File(CLASS_BASE_PATH));
     }
 
+    //把java文件编译成.class文件
+    private static void compileJavaFile() throws FileNotFoundException {
+        //1.获取javac编译器
+        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+
+        //2.通过javac编译器获取一个编译java文件管理器
+        StandardJavaFileManager manager = compiler.getStandardFileManager(null, null, null);
+
+        //3.获取java文件对象   -调用一个工具类，从指定路径下，递归获取所有已java为后缀的文件
+        Set<File> javaFiles = FileUtil.getFilesForSuffix(new File(CLASS_BASE_PATH), ".java");
+        //- 这里就一个java文件，就直接使用了
+        File[] files = javaFiles.toArray(new File[javaFiles.size()]);
+        Iterable<? extends JavaFileObject> it = manager.getJavaFileObjects(files);
+
+        //4.编译
+        JavaCompiler.CompilationTask task = compiler.getTask(null, manager,
+                null, null, null, it);
+        task.call();
+    }
 
 }

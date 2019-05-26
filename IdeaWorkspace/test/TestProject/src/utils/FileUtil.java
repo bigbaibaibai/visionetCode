@@ -10,6 +10,7 @@ public class FileUtil {
 
     /**
      * 迭代获取文件夹中所有符合后缀的文件，如果是单个文件，则如果满足后缀集合中只有一个对象
+     *
      * @param file
      * @param suffix
      * @return
@@ -25,17 +26,17 @@ public class FileUtil {
             //new一个栈，用户存储文件夹
             Stack<File> stack = new Stack<>();
             stack.push(file);
-            if (!stack.isEmpty()) {
+            while (!stack.isEmpty()) {
                 File pop = stack.pop();
                 //把文件夹和符合后缀的筛选出来
                 File[] listFiles = pop.listFiles((pathname) -> pathname.isDirectory() || pathname.getName().endsWith(suffix));
                 //遍历
                 for (File listFile : listFiles) {
                     //如果是文件夹，压入栈中，继续遍历
-                    if (pop.isDirectory()) {
-                        stack.push(pop);
+                    if (listFile.isDirectory()) {
+                        stack.push(listFile);
                     } else {   //如果是文件，则添加到集合中
-                        files.add(pop);
+                        files.add(listFile);
                     }
                 }
             }
