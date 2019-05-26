@@ -1,4 +1,4 @@
-package proxy;
+package myproxy;
 
 public interface Flyable {
 
