@@ -32,7 +32,7 @@ public class TestMap {
 //        Map<Integer, List<Integer>> classify = classify(Arrays.asList(1, 2, 3, 3, 4, 2));
 //        System.out.println(classify);
 
-        System.out.println(Arrays.asList(1,2,3,4,5,6).toString().replaceAll("[\\W^,]",""));
+//        System.out.println(Arrays.asList(1,2,3,4,5,6).toString().replaceAll("[\\W^,]",""));
 
     }
 
