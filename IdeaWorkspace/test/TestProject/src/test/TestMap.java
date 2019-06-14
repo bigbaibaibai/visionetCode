@@ -31,8 +31,11 @@ public class TestMap {
     public static void main(String[] args) {
 //        Map<Integer, List<Integer>> classify = classify(Arrays.asList(1, 2, 3, 3, 4, 2));
 //        System.out.println(classify);
-
-//        System.out.println(Arrays.asList(1,2,3,4,5,6).toString().replaceAll("[\\W^,]",""));
+        String[] split = Arrays.asList(1).toString().replaceAll("\\[|\\]| ", "").split(",");
+        for (String s : split) {
+            System.out.println(s);
+            System.out.println(split.length);
+        }
 
     }
 
