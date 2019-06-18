@@ -12,13 +12,12 @@ import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.lang.reflect.Proxy;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.*;
+import java.util.Set;
 
 //动态生成XXXProxy这代理类，并且动态编译，再通过反射创建对象并加载到内存中
 //动态生成Java源文件并且排版是一个非常繁琐的工作，为了简化操作
@@ -26,7 +25,7 @@ import java.util.*;
 //希望 JavaPoet  不要成为你的负担，不理解 JavaPoet 没有关系，你只要把它当成一个Java源码生成工具使用即可。
 public class MyProxy {
 
-    private static final String CLASS_BASE_PATH = "C:\\Users\\bai\\Desktop\\myproxy";
+    private static final String CLASS_BASE_PATH = "E:\\文档\\myproxy";
     private static final String PACKAGE_NAME = "myproxy";
 
     //获取代理对象
@@ -116,7 +115,10 @@ public class MyProxy {
         JavaFile javaFile = JavaFile.builder(PACKAGE_NAME, classBuilder.build()).build();
 
         //把java文件写到执行路径下（默认会把包生成文件夹）
-        javaFile.writeTo(new File(CLASS_BASE_PATH));
+        File file = new File(CLASS_BASE_PATH);
+        if (!file.exists())
+            file.mkdir();
+        javaFile.writeTo(file);
     }
 
     //把java文件编译成.class文件
