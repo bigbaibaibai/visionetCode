@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>phone_parent</artifactId>
+        <groupId>xyz.thishome</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../phone_parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>phone_manager</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>phone_manager_pojo</module>
+        <module>phone_manager_mapper</module>
+        <module>phone_manager_service</module>
+        <module>phone_manager_web</module>
+    </modules>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>xyz.thishome</groupId>
+            <artifactId>phone_common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <!--tomcat 插件-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <port>8080</port>
+                    <path>/</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
