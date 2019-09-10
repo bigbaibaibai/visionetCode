@@ -15,7 +15,7 @@ public class ClassUtil {
      * @param classFolder
      * @throws Exception
      */
-    public static <T> void loadClass(File classFolder) throws Exception {
+    public static <T> void addClassPath(File classFolder) throws Exception {
 
         //获取URLClassLoader的addURL方法
         Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
@@ -34,16 +34,15 @@ public class ClassUtil {
             method.setAccessible(accessible);
         }
 
-        Set<File> files = FileUtil.getFilesForSuffix(classFolder, ".class");
-        for (File file : files) {
-            // 把文件名称转化为，和java.lang.String类似的全类名
-            String className = file.getAbsolutePath();
-            className = className.substring(classFolder.getAbsolutePath().length() + 1, className.length() - 6);
-            className = className.replace(File.separatorChar, '.');
-            // 加载Class类
-            Class.forName(className);
-        }
-
+//        Set<File> files = FileUtil.getFilesForSuffix(classFolder, ".class");
+//        for (File file : files) {
+//            // 把文件名称转化为，和java.lang.String类似的全类名
+//            String className = file.getAbsolutePath();
+//            className = className.substring(classFolder.getAbsolutePath().length() + 1, className.length() - 6);
+//            className = className.replace(File.separatorChar, '.');
+//            // 加载Class类，这里只加载，先不初始化
+//            ClassUtil.class.getClassLoader().loadClass(className);
+//        }
     }
 
     /**

@@ -33,7 +33,7 @@ public class TestArray {
     @Test
     public void testList() {
         ArrayList<Object> list = new ArrayList<>(size);
-        testConll(list);  //1358
+        testConll(list);
         /**
          * 遍历添加元素耗时：657s
          * maxMemory:2944m
@@ -45,7 +45,7 @@ public class TestArray {
     @Test
     public void testLink() {
         LinkedList<Object> list = new LinkedList<>();
-        testConll(list);  //1889
+        testConll(list);
         /**
          * 遍历添加元素耗时：45485s
          * maxMemory:2944m
@@ -68,6 +68,15 @@ public class TestArray {
         }
         end = System.currentTimeMillis();
         System.out.println("只遍历耗时：" + (end - begin));
+    }
+
+    @Test
+    public void testArrayList(){
+        ArrayList<Object> objects = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            objects.add(new Object());
+        }
+        System.out.println(objects);
     }
 
 }

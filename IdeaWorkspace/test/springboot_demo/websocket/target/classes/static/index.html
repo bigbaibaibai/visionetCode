@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/sockjs.js"></script>
+    <script src="js/stomp.js"></script>
+</head>
+<body>
+
+    <div id="msg"></div>
+
+<script type="application/javascript">
+    var sockJS = new SockJS("http://localhost:8080/socket");
+    var stompClient = new Stomp.over(sockJS);
+    //建立连接
+    stompClient.connect({}, function (data) {
+        //第一个参数为SockJS对象URL拼接后缀路径，这里是/server/sendMessageByServer
+        //拼接后完整的连接URL就是http://localhost:8080/socket/server/sendMessageByServer
+        stompClient.subscribe("/server/sendMessageByServer", function (response) {
+            $("#msg").append(response.body + "<br/>");
+        })
+    });
+
+</script>
+</body>
+</html>

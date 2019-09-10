@@ -25,7 +25,7 @@ import java.util.Set;
 //希望 JavaPoet  不要成为你的负担，不理解 JavaPoet 没有关系，你只要把它当成一个Java源码生成工具使用即可。
 public class MyProxy {
 
-    private static final String CLASS_BASE_PATH = "E:\\文档\\myproxy";
+    private static final String CLASS_BASE_PATH = "D:\\Documents\\Note\\基础\\设计模式\\代理\\Java生成代码";
     private static final String PACKAGE_NAME = "myproxy";
 
     //获取代理对象
@@ -39,11 +39,11 @@ public class MyProxy {
             //二、 编译
             compileJavaFile();
 
-            //三、 加载class文件到jvm中
-            ClassUtil.loadClass(new File(CLASS_BASE_PATH));
+            //三、 加载class文件所在目录添加到类路径
+            ClassUtil.addClassPath(new File(CLASS_BASE_PATH));
 
-            //四、 创建对象并返回
-            Class proxyClass = MyProxy.class.getClassLoader().loadClass(PACKAGE_NAME + "." + proxyClassName);
+            //四、 加载类并创建对象
+            Class proxyClass = Class.forName(PACKAGE_NAME + "." + proxyClassName);
             return (T) proxyClass.getConstructor(InvocationHandler.class).newInstance(invocationHandler);
         } catch (Exception e) {
             e.printStackTrace();

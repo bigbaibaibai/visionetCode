@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/sockjs.js"></script>
+    <script src="js/stomp.js"></script>
+</head>
+<body>
+
+<input id="id" type="text"><input id="button" type="button">
+<br>
+<div id="msg"></div>
+
+<script type="application/javascript">
+
+    $(function () {
+
+        $("#button").click(function(){
+            var sockJS = new SockJS("http://localhost:8080/socket");
+            var id = $("#id").val();
+            var stompClient = new Stomp.over(sockJS);
+            $.ajax({
+                url:"/login/" + id,
+                success:function(data){
+                    alert(data);
+                    //建立连接
+                    stompClient.connect({}, function (data) {
+                        //订阅消息，第一个参数为SockJS对象URL拼接后缀路径
+                        stompClient.subscribe("/user/"+ id +"/sendMessageByServer", function (response) {
+                            console.log(response);
+                            $("#msg").append(response.body + "<br/>");
+                        })
+                    });
+                    //主动推送消息，最后一个参数是传输的数据，这里把一个对象转化为json传输，后台接收对象做好属性映射即可
+                    //stompClient.send("/message", {} ,JSON.stringify({
+                    //    content:"",
+                    //        toUserId:"",
+                    //        fromUserId:""
+                    //}));
+                }
+            })
+        });
+    })
+
+</script>
+</body>
+</html>

@@ -5,7 +5,7 @@ public class Singleton {
         System.out.println("Singleton构造函数");
     }
 
-    private static Singleton singleton = null;
+    private volatile static  Singleton singleton = null;
 
     public static Singleton getSingleton() {
         if (singleton == null) {

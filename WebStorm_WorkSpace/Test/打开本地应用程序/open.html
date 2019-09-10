@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>打开应用</title>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<input id="button" type="submit" name="打开应用程序">
+
+<script type="application/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#button").click(function () {
+            var shell = new ActiveXObject("WScript.Shell");
+            //读取注册表
+            var key = shell.RegRead("HKEY_LOCAL_MACHINE/SOFTWARE/WOW6432Node/Intelligent Manage System/IMS300");
+            console(JSON.stringify(key));
+            //                     exePath = exePath.split("%")[0].substring(0, exePath.length - 1);                   
+            //                     filePath = $("#hfFilePath").val() + filePath.split("HaiKou\\")[1];
+            //                     var para = exePath + " " + filePath; //如果没有参数则去掉filePath
+            //                     if (fso.FileExists(exePath)) {   //检测是否安装了                    
+            //                         shell.exec(para); //打开
+            //                     }
+            //                     else {
+            //                         alert("未能检测到本地已安装该软件");
+            //                     }
+        })
+    })
+
+
+</script>
+</body>
+</html>

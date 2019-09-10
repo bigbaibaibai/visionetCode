@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<input type="button" value="下载" id="button">
+
+<script type="application/javascript" src="../js/jquery.js"></script>
+<script type="application/javascript">
+    $(function(){
+        $("#button").click(function () {
+                    var filename = 'IMS300.reg'
+                    var a = document.createElement('a')
+                    var blob = new Blob(['Windows Registry Editor Version 5.00\n' +
+                    '\n' +
+                    '[HKEY_CLASSES_ROOT\\IMS300]\n' +
+                    '@="URL:IMS300 Protocol"\n' +
+                    '"URL Protocol"="C:\\\\Program Files (x86)\\\\Intelligent Manage System\\\\IMS300\\\\IMS300.exe"\n' +
+                    '\n' +
+                    '[HKEY_CLASSES_ROOT\\IMS300\\DefaultIcon]\n' +
+                    '\n' +
+                    '@="C:\\\\Program Files (x86)\\\\Intelligent Manage System\\\\IMS300\\\\IMS300.exe,1"\n' +
+                    '\n' +
+                    '[HKEY_CLASSES_ROOT\\IMS300\\shell]\n' +
+                    '\n' +
+                    '@=""\n' +
+                    '[HKEY_CLASSES_ROOT\\IMS300\\shell\\open]\n' +
+                    '\n' +
+                    '@=""\n' +
+                    '[HKEY_CLASSES_ROOT\\IMS300\\shell\\open\\command]\n' +
+                    '\n' +
+                    '@="\\"C:\\\\Program Files (x86)\\\\Intelligent Manage System\\\\IMS300\\\\IMS300.exe\\" \\"%1\\""'])
+                    a.download = filename
+                    a.href = URL.createObjectURL(blob)
+                    a.click()
+                    URL.revokeObjectURL(blob)
+
+        })
+    })
+</script>
+</body>
+</html>
